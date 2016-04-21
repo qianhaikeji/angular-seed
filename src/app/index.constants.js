@@ -4,6 +4,7 @@
 
   angular
     .module('app')
-    .constant('moment', moment);
+    .constant('moment', moment)
+    .constant('appServer', 'http://www.qianhaikeji.cn');
 
 })();

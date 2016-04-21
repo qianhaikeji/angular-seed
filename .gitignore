@@ -1,6 +1,10 @@
 node_modules/
 bower_components/
-coverage/
 .sass-cache/
 .idea/
 .tmp/
+dist/
+.DS_Store
+.DS_Store?
+*.swp
+._.DS_Store

@@ -6,7 +6,7 @@
     .config(config);
 
   /** @ngInject */
-  function config($logProvider, toastrConfig, $provide) {
+  function config($logProvider, $locationProvider, RestangularProvider, appServer, toastrConfig, $provide) {
     // Enable log
     $logProvider.debugEnabled(true);
 
@@ -17,11 +17,16 @@
     toastrConfig.preventDuplicates = true;
     toastrConfig.progressBar = true;
 
+    RestangularProvider.setBaseUrl(appServer);
+
     $provide.decorator('$uiViewScroll', function ($delegate) {
       return function (uiViewElement) {
         //覆盖原来的方法，解决路由跳转，页面不会滚到顶端的问题
       }; 
     });
+
+    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('!');
   }
 
 })();
