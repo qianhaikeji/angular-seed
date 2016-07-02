@@ -1,0 +1,28 @@
+/* public css
+--------------------*/
+body{
+    background: #EEEEEE;
+    height: 100%;
+}
+
+table {
+  width: 100%;
+  margin-bottom: 0px !important;
+}
+
+a {
+  cursor: pointer;
+  text-decoration: none !important;
+}
+
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+}
+
+.full-height {
+  height: 100%;
+}
