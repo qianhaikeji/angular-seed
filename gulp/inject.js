@@ -3,6 +3,7 @@
 var path = require('path');
 var gulp = require('gulp');
 var conf = require('./conf');
+var environments = require('gulp-environments');
 
 var $ = require('gulp-load-plugins')();
 
@@ -25,6 +26,8 @@ gulp.task('inject', ['scripts'], function () {
     path.join(conf.paths.src, '/app/**/*.js'),
     path.join('!' + conf.paths.src, '/app/**/*.spec.js'),
     path.join('!' + conf.paths.src, '/app/**/*.mock.js'),
+        // 开发环境排除掉 "*.prod.js", 生产环境排除掉 "*.dev.js"
+    path.join('!' + conf.paths.src, environments.development() ? '/app/**/*.prod.js' :  '/app/**/*.dev.js'),
   ])
   .pipe($.angularFilesort()).on('error', conf.errorHandler('AngularFilesort'));
 

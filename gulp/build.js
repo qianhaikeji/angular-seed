@@ -90,8 +90,20 @@ gulp.task('other', function () {
     .pipe(gulp.dest(path.join(conf.paths.dist, '/')));
 });
 
+// 将 dist 目录中的文件移动到 LeanEngine 的发布目录中
+function moveToPublic() {
+  gulp.src([
+    conf.paths.dist + '/**/*.*'
+  ], {
+    base: './dist'
+  })
+  .pipe(gulp.dest(conf.paths.public));
+}
+
 gulp.task('clean', function () {
-  return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
+  return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/'), path.join(conf.paths.public, '/**/*.*')], {force:true});
 });
 
-gulp.task('build', ['html', 'fonts', 'other']);
+gulp.task('build', ['html', 'fonts', 'other'], function() {
+  moveToPublic();
+});

@@ -7,9 +7,6 @@
 
     /* @ngInject */
     function dataservice($q, $log, Restangular, $state, toastr) {
-        var isPrimed = false;
-        var primePromise;
-
         Restangular.setErrorInterceptor(function(response, deferred, responseHandler, authservice, $state) {
             // if (response.status === 400) {
             //     $log.warn(response.data.msg);
@@ -30,20 +27,5 @@
         };
 
         return service;
-
-        function prime() {
-            // This function can only be called once.
-            if (primePromise) {
-                return primePromise;
-            }
-
-            primePromise = $q.when(true).then(success);
-            return primePromise;
-
-            function success() {
-                isPrimed = true;
-                $log.debug('Primed data');
-            }
-        }
     }
 })();

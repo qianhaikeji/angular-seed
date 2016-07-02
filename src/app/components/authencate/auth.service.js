@@ -104,11 +104,11 @@
         $rootScope.$on('$stateChangeStart',
             function(event, toState, toParams, fromState, fromParams){
                 // app不需鉴权，因为app默认会跳order，oerder会做一次鉴权，免得弹两次登录提示。
-                if (toState.name === 'app.profile' && !authservice.logined){
-                    toastr.info('请先登录', '提醒');
-                    $state.go('app.login');
-                    event.preventDefault();
-                }
+                // if (toState.name === 'app.profile' && !authservice.logined){
+                //     toastr.info('请先登录', '提醒');
+                //     $state.go('app.login');
+                //     event.preventDefault();
+                // }
             }
         )
     }
